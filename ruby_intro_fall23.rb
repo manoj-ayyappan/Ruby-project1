@@ -11,9 +11,21 @@ def group_anagrams(a)
   # ADD YOUR CODE HERE
 end
 
-# Part 2
+# Part 2           
+
 def brackets_match?(s)
-  # ADD YOUR CODE HERE
+  stack = []                      # stack for maintaining brackets
+  s.each_char do |ch|
+    case ch
+    when "("
+      stack<<ch
+    when ")"
+      return false if stack.empty?
+      stack.pop
+    
+    end
+  end
+  true
 end
 
 def remove_and_append_vowels(s)
@@ -28,3 +40,5 @@ end
 class Book
   # ADD YOUR CODE HERE
 end
+
+p brackets_match?("(())")
