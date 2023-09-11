@@ -74,9 +74,9 @@ def brackets_match?(s)
 end
 
 def remove_and_append_vowels(s)
-  vowels = "aeiouAEIOU"
-  rest = ""
-  to_be_appended = ""
+  vowels = "aeiouAEIOU"                                       # list of vowels to remove
+  rest = ""                                                   # rest of the word
+  to_be_appended = ""                                         # list of vowels removed
 
   s.each_char do |ch|
     if vowels.include?(ch)
@@ -86,11 +86,23 @@ def remove_and_append_vowels(s)
     end
   end
 
-  rest + to_be_appended
+  rest + to_be_appended                                       # combine to get answer
 end
 
 def highest_frequency_word(s)
-  # ADD YOUR CODE HERE
+  words = s.downcase.split(/\s+/)                             # lowercase and split words
+  word_frequency = Hash.new(0)                                # create a hash
+
+  words.each do |word|
+    word_frequency[word] += 1                                 # keep track of frequency
+  end
+
+  max_frequency = word_frequency.values.max
+  most_frequent_words = word_frequency.select { |_word, freq| freq == max_frequency }
+
+  result_word = words.find { |word| most_frequent_words.key?(word) }        # first occurrence of the most frequent word
+
+  result_word
 end
 
 # Part 3
@@ -148,4 +160,5 @@ end
 
 # p brackets_match?("{(})")
 # p remove_and_append_vowels("LOlwa")
+# p highest_frequency_word("A cat is the most wonderful animal on Earth. Cat is known to be God by Egyptians. Cat is cute")
 
