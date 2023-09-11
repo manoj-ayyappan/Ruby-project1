@@ -158,6 +158,8 @@ class Book
 end
 
 
+# Testing functions
+
 # p brackets_match?("{(})")
 # p remove_and_append_vowels("LOlwa")
 # p highest_frequency_word("A cat is the most wonderful animal on Earth. Cat is known to be God by Egyptians. Cat is cute")
