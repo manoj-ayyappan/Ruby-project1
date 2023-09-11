@@ -11,22 +11,23 @@ def group_anagrams(a)
   # ADD YOUR CODE HERE
 end
 
-# Part 2           
-
+# Part 2
+           
 def brackets_match?(s)
-  stack = []                      # stack for maintaining brackets
+  stack = []                                                  # create a stack for saving the order
+  bracket_pairs = { ')' => '(', '}' => '{', ']' => '[' }      # create a dict with open and close brackets
+
   s.each_char do |ch|
-    case ch
-    when "("
-      stack<<ch
-    when ")"
-      return false if stack.empty?
-      stack.pop
-    
+    if bracket_pairs.values.include?(ch)
+      stack.push(ch)                                          # push into stack
+    elsif bracket_pairs.keys.include?(ch)
+      return false if stack.empty? || stack.pop != bracket_pairs[ch]    # false if stack is empty or if last element does not match
     end
   end
-  true
+
+  stack.empty?                                                # if stack empty --> match
 end
+
 
 def remove_and_append_vowels(s)
   # ADD YOUR CODE HERE
@@ -41,4 +42,4 @@ class Book
   # ADD YOUR CODE HERE
 end
 
-p brackets_match?("(())")
+p brackets_match?("{(})")
