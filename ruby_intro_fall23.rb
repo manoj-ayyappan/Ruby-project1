@@ -30,7 +30,19 @@ end
 
 
 def remove_and_append_vowels(s)
-  # ADD YOUR CODE HERE
+  vowels = "aeiouAEIOU"
+  rest = ""
+  to_be_appended = ""
+
+  s.each_char do |ch|
+    if vowels.include?(ch)
+      to_be_appended += ch
+    else
+      rest += ch
+    end
+  end
+
+  rest + to_be_appended
 end
 
 def highest_frequency_word(s)
@@ -42,4 +54,5 @@ class Book
   # ADD YOUR CODE HERE
 end
 
-p brackets_match?("{(})")
+# p brackets_match?("{(})")
+p remove_and_append_vowels("LOlwa")
