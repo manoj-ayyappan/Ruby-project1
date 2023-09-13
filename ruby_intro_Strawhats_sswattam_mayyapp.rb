@@ -1,30 +1,12 @@
 # Part 1
 def two_sum?(a, n)
-
-  # Old code
-
-  # for i in a do
-  #   for j in a[1, a.length()] do
-  #     if i + j == n
-  #       return "True"
-  #     end
-  #   end
-  # end
-  # return "False"
-
-  # New code (working)
-
   seen = {}                                 # create a hashmap
-  
   a.each do |num|                           
     difference = n - num                    # calculate the difference
     return true if seen[difference]         # if we find a pair
-    
     seen[num] = true                        # else add the element to hashmap
   end
-  
   false                                     # no pairs
-
 end
 
 def max_sub_array(a)
